@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kepemimpinan OSIS: Karakter Khalifah Fil Ardh & Fondasi Percaya Diri — Abu Haripin, M.Pd.</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            arabic: ['"Amiri"', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#07111E',
+              900: '#0B192C',
+              800: '#132238',
+              700: '#1B314E',
+            },
+            gold: {
+              400: '#F3C623',
+              500: '#D4AF37',
+              600: '#B59024',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #0B192C;
+      color: #F8FAFC;
+      overflow-x: hidden;
+    }
+    .font-arabic {
+      font-family: 'Amiri', serif;
+      line-height: 2.2;
+    }
+    .glass-card {
+      background: linear-gradient(145deg, rgba(19, 34, 56, 0.85) 0%, rgba(11, 25, 44, 0.92) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.38);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .glass-card:hover {
+      border-color: rgba(243, 198, 35, 0.85);
+      box-shadow: 0 12px 32px -8px rgba(212, 175, 55, 0.22), 0 0 20px -4px rgba(243, 198, 35, 0.15);
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(14px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes modalZoom {
+      from { opacity: 0; transform: scale(0.94) translateY(8px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .slide-enter {
+      animation: slideIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .modal-enter {
+      animation: modalZoom 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#0B192C] via-[#132238] to-[#0D2638] text-slate-100 flex flex-col justify-between relative selection:bg-[#D4AF37]/30 selection:text-[#F3C623]">
+
+  <!-- Top Navigation Bar (Strict 3-Zone Contract) -->
+  <header class="relative z-20 flex items-center justify-between gap-8 px-6 lg:px-10 py-3.5 border-b border-[#D4AF37]/25 bg-[#0B192C]/85 backdrop-blur-md">
+    <button onclick="goToSlide(0)" class="text-sm lg:text-base font-bold tracking-tight text-[#F3C623] whitespace-nowrap shrink-0 cursor-pointer">
+      LDKS OSIS · Khalifah Fil Ardh
+    </button>
+
+    <nav class="hidden lg:flex items-center gap-6 text-xs font-medium text-slate-300">
+      <button onclick="goToSlide(1)" class="nav-link hover:text-[#F3C623] transition-colors whitespace-nowrap shrink-0 cursor-pointer">Video Stimulus</button>
+      <button onclick="goToSlide(2)" class="nav-link hover:text-[#F3C623] transition-colors whitespace-nowrap shrink-0 cursor-pointer">Materi Inti</button>
+      <button onclick="goToSlide(5)" class="nav-link hover:text-[#F3C623] transition-colors whitespace-nowrap shrink-0 cursor-pointer">Tokoh Panutan</button>
+      <button onclick="goToSlide(6)" class="nav-link hover:text-[#F3C623] transition-colors whitespace-nowrap shrink-0 cursor-pointer">Langkah &amp; Sesi</button>
+      <button onclick="goToSlide(8)" class="nav-link hover:text-[#F3C623] transition-colors whitespace-nowrap shrink-0 cursor-pointer">Diskusi &amp; FAQ</button>
+    </nav>
+
+    <div class="flex items-center gap-3 shrink-0">
+      <button onclick="toggleFullscreen()" id="fullscreen-btn" class="px-3.5 py-1.5 text-xs font-semibold text-[#0B192C] bg-gradient-to-r from-[#D4AF37] to-[#F3C623] rounded-lg hover:brightness-110 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer shadow-sm">
+        <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+        <span id="fullscreen-label">Layar Penuh</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Slide Stage -->
+  <main class="relative z-10 flex-1 flex items-center justify-center px-4 sm:px-8 lg:px-14 py-5 overflow-y-auto">
+    <div id="slide-container" class="w-full max-w-[1360px] my-auto slide-enter"></div>
+  </main>
+
+  <!-- Floating Bottom Slide Navigation Bar -->
+  <footer class="relative z-20 px-6 lg:px-10 py-3 border-t border-[#D4AF37]/20 bg-[#0B192C]/90 backdrop-blur-md flex items-center justify-between gap-4">
+    <div class="text-xs text-slate-400 hidden sm:flex items-center gap-2 whitespace-nowrap">
+      <span>Pemateri: <strong class="text-slate-200 font-semibold">Abu Haripin, M.Pd.</strong></span>
+      <span>·</span>
+      <span id="slide-counter-text" class="text-[#F3C623] font-semibold font-mono">Slide 1 dari 9</span>
+    </div>
+
+    <!-- Dot Indicators -->
+    <div id="dot-indicators" class="flex items-center gap-2 mx-auto sm:mx-0"></div>
+
+    <!-- Prev / Next Controls -->
+    <div class="flex items-center gap-2.5 shrink-0">
+      <button onclick="prevSlide()" id="btn-prev" class="px-3.5 py-1.5 rounded-lg border border-[#D4AF37]/40 text-xs font-semibold text-slate-200 hover:border-[#F3C623] hover:text-[#F3C623] disabled:opacity-35 disabled:pointer-events-none transition-all flex items-center gap-1.5 cursor-pointer">
+        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+        <span>Sebelumnya</span>
+      </button>
+      <button onclick="nextSlide()" id="btn-next" class="px-4 py-1.5 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#F3C623] text-[#0B192C] text-xs font-bold hover:brightness-110 disabled:opacity-35 disabled:pointer-events-none transition-all flex items-center gap-1.5 cursor-pointer">
+        <span>Selanjutnya</span>
+        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Interactive Modal Overlay -->
+  <div id="modal-backdrop" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-md" onclick="handleBackdropClick(event)">
+    <div id="modal-content" class="glass-card rounded-2xl max-w-2xl w-full max-h-[88vh] overflow-y-auto p-6 sm:p-8 text-slate-100 shadow-2xl modal-enter relative border border-[#D4AF37]/60"></div>
+  </div>
+
+  <script>
+    const STIMULUS_SCENES = [
+      {
+        id: 1,
+        era: "Babak 1 · Damaskus, 99 H (717 M) · Sifat Shiddiq & Amanah",
+        title: "Cahaya Lentera Khalifah Umar bin Abdul Aziz",
+        narration: "Malam itu Khalifah Umar bin Abdul Aziz memeriksa pembukuan negara di bawah lampu minyak milik Baitul Mal. Saat seorang tamu mulai menanyakan urusan pribadi keluarganya, beliau segera mematikan lampu negara tersebut.",
+        quote: "“Minyak lampu tadi dibeli dari uang rakyat. Haram bagiku memakainya untuk membicarakan urusan pribadiku.”"
+      },
+      {
+        id: 2,
+        era: "Babak 2 · Konstantinopel, 1453 M · Sifat Fathanah (Usia 21 Tahun)",
+        title: "Visi & Strategi Pemuda 21 Tahun: Sultan Muhammad Al-Fatih",
+        narration: "Di usia 21 tahun, Al-Fatih menghadapi rantai raksasa yang menutup Teluk Tanduk Emas. Tanpa panik atau menyalahkan pasukan, ia merancang rel kayu berpelumas minyak untuk menyeberangkan 70 kapal melintasi bukit Galata dalam semalam!",
+        quote: "Sejak remaja ia menguasai 6 bahasa, matematika, dan sains, sembari tidak pernah meninggalkan shalat tahajud."
+      },
+      {
+        id: 3,
+        era: "Babak 3 · Yerusalem, 1187 M · Sifat Tabligh & Uswah Hasanah",
+        title: "Kemuliaan Akhlak Shalahuddin Al-Ayyubi",
+        narration: "Saat berhasil membebaskan Al-Quds, Shalahuddin tidak membalas dendam sedikit pun. Ia melindungi warga sipil dan bahkan mengirim tabib pribadi serta buah segar saat panglima lawannya, Raja Richard, jatuh sakit.",
+        quote: "Kewibawaan tertinggi seorang pemimpin lahir dari keluhuran akhlak yang memuliakan sesama."
+      }
+    ];
+
+    const MODAL_DATA = {
+      'qs-albaqarah-30': {
+        badge: "Al-Qur'an Al-Karim · QS. Al-Baqarah: 30",
+        title: "Mandat Manusia sebagai Khalifah di Muka Bumi",
+        subtitle: "Amanah kepemimpinan untuk menjaga keteraturan, merawat lingkungan, dan mencegah kerusakan.",
+        arabic: "وَإِذْ قَالَ رَبُّكَ لِلْمَلَائِكَةِ إِنِّي جَاعِلٌ فِي الْأَرْضِ خَلِيفَةً ۖ قَالُوا أَتَجْعَلُ فِيهَا مَنْ يُفْسِدُ فِيهَا وَيَسْفِكُ الدِّمَاءَ وَنَحْنُ نُسَبِّحُ بِحَمْدِكَ وَنُقَدِّسُ لَكَ ۖ قَالَ إِنِّي أَعْلَمُ مَا لَا تَعْلَمُونَ",
+        latin: "Wa iż qāla rabbuka lil-malā'ikati innī jā'ilun fil-arḍi khalīfah(tan), qālū ataj'alu fīhā may yufsidu fīhā wa yasfikud-dimā'a wa naḥnu nusabbiḥu biḥamdika wa nuqaddisu lak(a), qāla innī a'lamu mā lā ta'lamūn(a).",
+        translation: "\"Dan (ingatlah) ketika Tuhanmu berfirman kepada para malaikat, 'Aku hendak menjadikan khalifah di bumi.' Mereka berkata, 'Apakah Engkau hendak menjadikan orang yang merusak dan menumpahkan darah di sana, sedangkan kami bertasbih memuji-Mu dan menyucikan nama-Mu?' Dia berfirman, 'Sungguh, Aku mengetahui apa yang tidak kamu ketahui.'\" (QS. Al-Baqarah: 30)",
+        reflectionTitle: "Tafsir & Refleksi Kepemimpinan OSIS",
+        points: [
+          "Mandat Anti-Kerusakan: Pengurus OSIS membuktikan kelayakan sebagai khalifah dengan menjaga fasilitas sekolah, kebersihan, dan kerukunan siswa.",
+          "Kepemimpinan adalah Pengelolaan (Amanah): Jabatan di OSIS bukan keistimewaan untuk dilayani, melainkan tugas mengelola potensi siswa.",
+          "Kapasitas Ilmu & Solusi: Allah membekali manusia dengan ilmu pengetahuan (QS. Al-Baqarah: 31) agar pemimpin mampu menyelesaikan masalah secara bijaksana."
+        ],
+        takeaway: "Pastikan setiap ruangan atau fasilitas sekolah selalu lebih bersih dan rapi setelah digunakan oleh kegiatan OSIS."
+      },
+      'prinsip-kepemimpinan': {
+        badge: "Filosofi Kepemimpinan · Peran Ganda OSIS",
+        title: "Respek Lahir dari Konsistensi Perilaku, Bukan dari Pin Jabatan",
+        subtitle: "Mengapa keteladanan nyata jauh lebih berwibawa daripada instruksi lisan.",
+        arabic: "كَبُرَ مَقْتًا عِنْدَ اللَّهِ أَنْ تَقُولُوا مَا لَا تَفْعَلُونَ",
+        latin: "Kabura maqtan 'indallāhi an taqūlū mā lā taf'alūn(a).",
+        translation: "\"Sangat besar kebencian di sisi Allah bahwa kamu mengatakan apa-apa yang tidak kamu kerjakan.\" (QS. Ash-Shaff: 3)",
+        reflectionTitle: "Penerapan Integritas Pengurus OSIS",
+        points: [
+          "Walk the Talk: Rekan-rekan siswa melihat tindakan pengurus OSIS terlebih dahulu sebelum mendengarkan imbauan lisannya.",
+          "Disiplin Tanpa Dispensasi: Hadir 30 menit lebih awal saat piket gerbang dan mengenakan atribut seragam lengkap tanpa merasa kebal aturan."
+        ],
+        takeaway: "Jadilah orang pertama yang menaati aturan sekolah yang kamu sosialisasikan."
+      },
+      'qs-alahzab-21': {
+        badge: "Al-Qur'an Al-Karim · QS. Al-Ahzab: 21",
+        title: "Menjadi Uswah Hasanah: Keteladanan Moral & Dakwah Bil Hal",
+        subtitle: "Meneladani akhlak Rasulullah SAW sebagai pemimpin muda yang santun dan menginspirasi.",
+        arabic: "لَقَدْ كَانَ لَكُمْ فِي رَسُولِ اللَّهِ أُسْوَةٌ حَسَنَةٌ لِمَنْ كَانَ يَرْجُو اللَّهَ وَالْيَوْمَ الْآخِرَ وَذَكَرَ اللَّهَ كَثِيرًا",
+        latin: "Laqad kāna lakum fī rasūlillāhi uswatun ḥasanatul liman kāna yarjullāha wal-yaumal-ākhira wa żakarallāha kaṡīrā(n).",
+        translation: "\"Sungguh, telah ada pada (diri) Rasulullah itu suri teladan yang baik bagimu...\" (QS. Al-Ahzab: 21)",
+        reflectionTitle: "Refleksi Dakwah Bil Hal di Lingkungan Sekolah",
+        points: [
+          "Dakwah Bil Hal: Mengajak kebaikan paling kuat adalah dengan contoh nyata—seperti bersegera ke mushola saat adzan berkumandang.",
+          "Penyejuk di Media Sosial: Menjadi penengah yang santun dan objektif di grup chat angkatan."
+        ],
+        takeaway: "Jadikan kehadiranmu di kelas maupun di grup chat sebagai pembawa ketenangan dan solusi."
+      },
+      'qs-attin-isra': {
+        badge: "Dalil Self-Potential · QS. At-Tin: 4 & QS. Al-Isra: 84",
+        title: "Mengenali Potensi Diri sebagai Ciptaan Terbaik Allah",
+        subtitle: "Setiap pengurus memiliki keunikan bakat yang saling melengkapi ibarat potongan puzzle.",
+        arabic: "لَقَدْ خَلَقْنَا الْإِنْسَانَ فِي أَحْسَنِ تَقْوِيمٍ ۝ قُلْ كُلٌّ يَعْمَلُ عَلَىٰ شَاكِلَتِهِ",
+        latin: "Laqad khalaqnal-insāna fī aḥsani taqwīm(in). — Qul kulluy ya'malu 'alā syākilatihī.",
+        translation: "\"Sungguh, Kami telah menciptakan manusia dalam bentuk yang sebaik-baiknya.\" (QS. At-Tin: 4) — \"Katakanlah, 'Setiap orang berbuat sesuai dengan pembawaannya (potensi/bakatnya) masing-masing.'\" (QS. Al-Isra: 84)",
+        reflectionTitle: "Mengubah Rasa Minder Menjadi Kontribusi Maksimal",
+        points: [
+          "Ahsani Taqwim: Jangan minder membandingkan dirimu dengan orang lain; Allah membekali setiap pengurus dengan kekuatan unik.",
+          "Filosofi Puzzle: Keberhasilan acara OSIS adalah hasil kolaborasi berbagai divisi yang saling menguatkan."
+        ],
+        takeaway: "Fokus kembangkan kekuatan unikmu dan berkontribusilah 100% di divisimu tanpa rasa rendah diri."
+      },
+      'hadits-niat-ikhlas': {
+        badge: "Hadits Niat & Ketulusan · HR. Bukhari & Muslim",
+        title: "Niat Ikhlas Lillahi Ta'ala: Fondasi Mental Tahan Banting",
+        subtitle: "Meluruskan orientasi berorganisasi semata-mata mengharap ridha dan keberkahan Allah.",
+        arabic: "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى",
+        latin: "Innamal-a'mālu bin-niyyāt(i), wa innamā likulli-mri'in mā nawā.",
+        translation: "\"Sesungguhnya setiap amal perbuatan itu tergantung pada niatnya...\" (HR. Bukhari & Muslim)",
+        reflectionTitle: "Kekuatan Ikhlas dalam Kepemimpinan",
+        points: [
+          "Bebas dari Haus Validasi: Tetap bersemangat merapikan panggung dan sampah acara meski penonton sudah pulang.",
+          "Tangguh Menghadapi Kritik: Saat dievaluasi, pemimpin yang ikhlas tidak baper karena tujuannya adalah perbaikan bersama."
+        ],
+        takeaway: "Perbarui niat sebelum bertugas: 'Lelahku di OSIS hari ini adalah ibadah karena Allah.'"
+      },
+      'hadits-sombong': {
+        badge: "Hadits Definisi Sombong · HR. Muslim no. 91",
+        title: "Percaya Diri vs Kesombongan (Al-Kibr)",
+        subtitle: "Percaya diri menguatkan dan merangkul; kesombongan menolak kebenaran dan meremehkan sesama.",
+        arabic: "الْكِبْرُ بَطَرُ الْحَقِّ وَغَمْطُ النَّاسِ",
+        latin: "Al-kibru baṭarul-ḥaqqi wa ghamṭun-nās(i).",
+        translation: "\"Kesombongan adalah menolak kebenaran (baṭarul-ḥaqq) dan meremehkan manusia (ghamṭun-nās).\" (HR. Muslim no. 91)",
+        reflectionTitle: "Perbedaan Tegas di Meja Rapat OSIS",
+        points: [
+          "Berani Berpendapat Sekaligus Lapang Dada: Berani mengusulkan ide program kerja, namun siap menerima usulan rekan yang lebih baik.",
+          "Menghormati Semua Warga Sekolah: Menghargai adik kelas, rekan staf, hingga petugas kebersihan."
+        ],
+        takeaway: "Pemimpin yang percaya diri membuat orang di sekitarnya merasa dihargai dan berdaya."
+      },
+      'karakter-shiddiq': {
+        badge: "Karakter Kunci 01 · Shiddiq (Jujur & Berintegritas)",
+        title: "Shiddiq: Menjunjung Kebenaran dalam Ucapan & Tindakan",
+        subtitle: "Teladan Dunia: Umar bin Abdul Aziz | Teladan Indonesia: Bung Hatta & Jenderal Hoegeng",
+        arabic: "عَلَيْكُمْ بِالصِّدْقِ فَإِنَّ الصِّدْقَ يَهْدِي إِلَى الْبِرِّ",
+        latin: "'Alaikum biṣ-ṣidqi fa innaṣ-ṣidqa yahdī ilal-birr(i).",
+        translation: "\"Hendaklah kalian senantiasa berlaku jujur, karena sesungguhnya kejujuran mengantarkan pada kebaikan.\" (HR. Muslim)",
+        reflectionTitle: "Implementasi di OSIS & Teladan Tokoh",
+        points: [
+          "Aksi OSIS: Bendahara menyusun laporan kas acara secara transparan hingga nominal terkecil tanpa manipulasi.",
+          "Teladan Dunia (Umar bin Abdul Aziz): Mematikan lampu minyak negara saat berbicara urusan keluarga pribadi.",
+          "Teladan Indonesia (Bung Hatta & Jenderal Hoegeng): Bung Hatta mengembalikan sisa uang dinas hingga sen terakhir; Jenderal Hoegeng menutup toko bunga istrinya demi mencegah gratifikasi jabatan."
+        ],
+        takeaway: "Kepercayaan tumbuh dari kejujuran pada hal-hal terkecil."
+      },
+      'karakter-amanah': {
+        badge: "Karakter Kunci 02 · Amanah (Dapat Dipercaya)",
+        title: "Amanah: Bertanggung Jawab Penuh atas Tugas & Janji",
+        subtitle: "Teladan Dunia: Shalahuddin Al-Ayyubi | Teladan Indonesia: Jenderal Sudirman & Sri Sultan HB IX",
+        arabic: "إِنَّ اللَّهَ يَأْمُرُكُمْ أَنْ تُؤَدُّوا الْأَمَانَاتِ إِلَىٰ أَهْلِهَا",
+        latin: "Innallāha ya'murukum an tu'addul-amānāti ilā ahlihā.",
+        translation: "\"Sesungguhnya Allah menyuruh kamu menyampaikan amanah kepada yang berhak menerimanya...\" (QS. An-Nisa: 58)",
+        reflectionTitle: "Implementasi di OSIS & Teladan Tokoh",
+        points: [
+          "Aksi OSIS: Menuntaskan proposal sesuai deadline dan merawat aset sound system/proyektor sekolah hingga kembali utuh.",
+          "Teladan Dunia (Shalahuddin Al-Ayyubi): Menepati setiap janji perdamaian dan menyalurkan seluruh harta negara untuk umat.",
+          "Teladan Indonesia (Jenderal Sudirman & Sri Sultan HB IX): Jenderal Sudirman memimpin gerilya dari atas tandu di usia 29 tahun; Sultan HB IX menyumbangkan 6 juta Gulden untuk menopang Republik Indonesia."
+        ],
+        takeaway: "Tunaikan setiap tugas seolah-olah keberhasilan seluruh acara bergantung pada ketuntasan amanahmu."
+      },
+      'karakter-fathanah': {
+        badge: "Karakter Kunci 03 · Fathanah (Cerdas & Solutif)",
+        title: "Fathanah: Bijaksana Memetakan Prioritas & Mengambil Keputusan",
+        subtitle: "Teladan Dunia: Sultan Muhammad Al-Fatih | Teladan Indonesia: Prof. Dr. Ing. B.J. Habibie",
+        arabic: "يُؤْتِي الْحِكْمَةَ مَنْ يَشَاءُ ۚ وَمَنْ يُؤْتَ الْحِكْمَةَ فَقَدْ أُوتِيَ خَيْرًا كَثِيرًا",
+        latin: "Yu'til-ḥikmata may yasyā'(u), wa may yu'tal-ḥikmata faqad ūtiya khairan kaṡīrā(n).",
+        translation: "\"Dia menganugerahkan hikmah (kebijaksanaan/kecerdasan) kepada siapa yang Dia kehendaki...\" (QS. Al-Baqarah: 269)",
+        reflectionTitle: "Implementasi di OSIS & Teladan Tokoh",
+        points: [
+          "Aksi OSIS: Sigap mengalihkan panggung pembukaan ke aula tertutup saat hujan lebat turun tanpa menimbulkan panik.",
+          "Teladan Dunia (Sultan Muhammad Al-Fatih): Pemimpin 21 tahun yang menguasai 6 bahasa dan menyeberangkan 70 kapal melintasi bukit Galata dalam semalam.",
+          "Teladan Indonesia (Prof. B.J. Habibie): Memadukan Imtak & Iptek, pemegang paten dirgantara dunia, serta solutif mengatasi krisis ekonomi Indonesia."
+        ],
+        takeaway: "Selalu siapkan Plan B untuk setiap kegiatan lapangan agar tim tetap tenang dalam segala situasi."
+      },
+      'karakter-tabligh': {
+        badge: "Karakter Kunci 04 · Tabligh (Komunikatif & Santun)",
+        title: "Tabligh: Menyampaikan Pesan Kebaikan dengan Jelas & Santun",
+        subtitle: "Teladan Dunia: Mus'ab bin Umair | Teladan Indonesia: K.H. Agus Salim & K.H. Ahmad Dahlan",
+        arabic: "ادْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ",
+        latin: "Ud'u ilā sabīli rabbika bil-ḥikmati wal-mau'iẓatil-ḥasanah.",
+        translation: "\"Serulah (manusia) kepada jalan Tuhanmu dengan hikmah dan pengajaran yang baik...\" (QS. An-Nahl: 125)",
+        reflectionTitle: "Implementasi di OSIS & Teladan Tokoh",
+        points: [
+          "Aksi OSIS: Menyosialisasikan tata tertib dan info lomba antarkelas secara persuasif tanpa nada menggurui.",
+          "Teladan Dunia (Mus'ab bin Umair RA): Duta muda pertama Islam yang menyatukan masyarakat Madinah dengan dialog santun dan merangkul.",
+          "Teladan Indonesia (K.H. Agus Salim & K.H. Ahmad Dahlan): H. Agus Salim memukau diplomasi PBB dengan penguasaan 9 bahasa asing; K.H. Ahmad Dahlan menggerakkan pendidikan pemuda lewat teladan amal nyata."
+        ],
+        takeaway: "Kata-kata yang santun membuka pintu hati yang tertutup dan menggerakkan tim dengan sukarela."
+      },
+      'unicef-toolkits': {
+        badge: "Referensi Global · UNICEF Life Skills & Community Engagement",
+        title: "UNICEF Life Skills & Community Engagement Toolkits",
+        subtitle: "Panduan praktis kecakapan hidup dan manajemen kolaborasi remaja di lingkungan sekolah.",
+        reflectionTitle: "4 Pilar Implementasi di Kepanitiaan Sekolah",
+        points: [
+          "01. Persiapan Matang: Buat rundown terperinci menit per menit, tentukan PIC tiap divisi, dan lakukan gladi bersih H-1.",
+          "02. Komunikasi Efektif: Briefing 10 menit sebelum gerbang dibuka dan gunakan format pesan jelas saat info darurat.",
+          "03. Manajemen Kesalahan: Quick damage control tanpa saling menyalahkan saat terjadi kendala teknis.",
+          "04. Kerjasama Tim: Saling back-up lintas divisi hingga seluruh rangkaian acara tuntas."
+        ],
+        takeaway: "Kesuksesan acara 80% ditentukan oleh kematangan persiapan dan kecepatan saling membantu di lapangan."
+      },
+      'panduan-studi-kasus': {
+        badge: "Panduan Penyelesaian · Studi Kasus Sesi 2 (15 Menit)",
+        title: "Solusi Krisis H-2: Anggaran Berkurang 50% & Koordinasi Macet",
+        subtitle: "Rumusan 3 langkah konkret berbasis karakter Shiddiq, Amanah, Fathanah, dan Tabligh.",
+        reflectionTitle: "3 Langkah Konkret Pemecahan Masalah Tim",
+        points: [
+          "Langkah 1 — Briefing Darurat & Komunikasi Terbuka (Shiddiq & Tabligh): Kumpulkan seluruh koordinator divisi selama 15 menit. Sampaikan kondisi pemangkasan anggaran 50% secara transparan dan buka ruang dialog.",
+          "Langkah 2 — Realokasi Anggaran ke Pos Esensial (Fathanah): Pangkas atribut seremonial/dekorasi mahal, optimalkan fasilitas inventaris sekolah yang gratis, dan fokuskan dana 50% pada inti acara.",
+          "Langkah 3 — Penataan Ulang PIC & Sistem Back-up Lintas Divisi (Amanah): Buat daftar tugas prioritas H-2 hingga hari-H yang disepakati bersama."
+        ],
+        takeaway: "Gunakan timer 15 menit untuk mendiskusikan langkah detail bersama kelompokmu!"
+      }
+    };
+
+    const FAQ_LIST = [
+      {
+        q: "1. Bagaimana mengatasi ejekan teman (misal disindir 'sok sibuk / sok patuh') saat menjalankan tugas OSIS?",
+        a: "Kembalikan pada Niat Ikhlas Lillahi Ta'ala dan Uswah Hasanah. Jangan membalas sindiran dengan emosi. Tetaplah hangat, ramah dalam bergaul sehari-hari, namun konsisten dalam kedisiplinan. Ketulusan dan kerendahan hatimu akan mengubah ejekan menjadi respek."
+      },
+      {
+        q: "2. Bagaimana cara membagi waktu antara padatnya kegiatan OSIS dengan nilai akademik di kelas?",
+        a: "Terapkan sifat Fathanah seperti B.J. Habibie (cerdas menyusun skala prioritas). Gunakan jadwal mingguan tertulis, batasi durasi rapat OSIS agar efektif (maksimal 60 menit), cicil tugas sekolah H-3 sebelum acara, dan optimalkan delegasi tim."
+      },
+      {
+        q: "3. Bagaimana cara membina dan merangkul anggota OSIS yang pasif atau sulit dihubungi?",
+        a: "Terapkan sifat Tabligh seperti Mus'ab bin Umair (pendekatan empati / heart-to-heart). Ajak bicara secara personal (empat mata/japri dengan santun), tanyakan kesulitannya, lalu berikan tugas spesifik sesuai potensi uniknya."
+      }
+    ];
+
+    let currentSlide = 0;
+    const totalSlides = 9;
+    let currentSceneIdx = 0;
+    let timerInterval = null;
+    let timerRemainingSeconds = 600;
+    let timerRunning = false;
+
+    function setStimulusScene(idx) {
+      currentSceneIdx = idx;
+      renderSlide();
+    }
+
+    function getSlideHTML(index) {
+      switch (index) {
+        case 0:
+          return `
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+              <div class="lg:col-span-8 flex flex-col justify-center py-6 pl-6 border-l-2 border-[#D4AF37]/70">
+                <div class="text-xs font-semibold tracking-widest uppercase text-[#F3C623] mb-3">
+                  MODUL LDKS · LEADERSHIP TRAINING · OSIS BERKARAKTER KHALIFAH
+                </div>
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-[#F3C623] mb-2">Kepemimpinan:</h1>
+                <h2 class="text-2xl sm:text-4xl font-bold text-white leading-tight mb-6">
+                  Menumbuhkan &amp; Membangun Rasa Percaya Diri dalam Menjadi Khalifah Panutan
+                </h2>
+                <p class="text-base sm:text-lg text-slate-200 mb-8">
+                  Membangun Jiwa Pemimpin Muda Berintegritas, Berdaya, dan Menginspirasi.
+                </p>
+                <div class="space-y-4">
+                  <div>
+                    <div class="text-xs font-semibold uppercase text-[#F3C623] mb-1">Pemateri:</div>
+                    <div class="text-2xl sm:text-3xl font-extrabold text-white whitespace-nowrap">Abu Haripin, M.Pd.</div>
+                  </div>
+                  <div class="pt-1">
+                    <button onclick="nextSlide()" class="px-5 py-3 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F3C623] text-[#0B192C] font-extrabold text-sm cursor-pointer whitespace-nowrap">
+                      Putar Cerita Stimulus Pembuka →
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="lg:col-span-4 glass-card rounded-2xl p-6 flex flex-col justify-center items-center text-center">
+                <div class="w-20 h-20 rounded-full border-2 border-[#F3C623] bg-[#D4AF37]/15 flex items-center justify-center mb-4">
+                  <i data-lucide="shield-check" class="w-10 h-10 text-[#F3C623]"></i>
+                </div>
+                <h3 class="text-lg font-extrabold text-[#F3C623]">OSIS Berkarakter Khalifah</h3>
+                <p class="text-xs text-slate-300 mt-2">Dilengkapi Kisah Kejayaan Islam &amp; Teladan Tokoh Pemimpin Dunia serta Indonesia.</p>
+              </div>
+            </div>
+          `;
+        case 1:
+          return `
+            <div class="space-y-4">
+              <div>
+                <div class="text-xs font-bold uppercase tracking-widest text-[#F3C623]">PENGANTAR SEBELUM MATERI UTAMA · VIDEO STIMULUS KEPEMIMPINAN</div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Kisah Kepemimpinan <span class="text-[#F3C623]">Masa Kejayaan Islam</span></h2>
+                <p class="text-xs sm:text-sm text-slate-200 mt-1">Simak 2 video singkat (format potret 9:16) tentang keteladanan pemimpin panutan di masa kejayaan Islam sebelum memasuki materi inti.</p>
+              </div>
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                <div class="lg:col-span-7 glass-card rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
+                  <div class="flex items-center justify-between gap-2 pb-2 mb-3 border-b border-[#D4AF37]/25">
+                    <span class="text-xs font-bold text-[#F3C623]">Tampilan Layar Potret (2 Video YouTube Shorts 9:16)</span>
+                    <span class="text-[11px] text-slate-300 font-mono">1_ufYAMlYC0 &amp; fJBQoO1oTEY</span>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 items-center justify-items-center my-auto">
+                    <!-- Portrait Video 1 -->
+                    <div class="w-full max-w-[250px] flex flex-col items-center rounded-2xl bg-[#07111E] border-2 border-[#D4AF37]/60 shadow-xl overflow-hidden">
+                      <div class="w-full px-3 py-2 bg-[#0B192C] border-b border-[#D4AF37]/30 flex items-center justify-between">
+                        <span class="text-[11px] font-extrabold text-[#F3C623]">Video 01 · Shorts</span>
+                        <a href="https://www.youtube.com/shorts/1_ufYAMlYC0" target="_blank" rel="noopener noreferrer" class="text-[11px] text-slate-300 hover:text-[#F3C623]">Buka Link ↗</a>
+                      </div>
+                      <div class="relative w-full aspect-[9/16] max-h-[360px] bg-black overflow-hidden">
+                        <iframe
+                          class="w-full h-full border-0"
+                          src="https://www.youtube.com/embed/1_ufYAMlYC0?rel=0&modestbranding=1&playsinline=1"
+                          title="Kisah Teladan Kepemimpinan Islam 1"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowfullscreen
+                        ></iframe>
+                      </div>
+                      <div class="w-full px-3 py-2 bg-[#0B192C]/95 border-t border-[#D4AF37]/25 text-center">
+                        <p class="text-xs font-bold text-white truncate">Kisah Kepemimpinan Islam #1</p>
+                      </div>
+                    </div>
+
+                    <!-- Portrait Video 2 -->
+                    <div class="w-full max-w-[250px] flex flex-col items-center rounded-2xl bg-[#07111E] border-2 border-[#D4AF37]/60 shadow-xl overflow-hidden">
+                      <div class="w-full px-3 py-2 bg-[#0B192C] border-b border-[#D4AF37]/30 flex items-center justify-between">
+                        <span class="text-[11px] font-extrabold text-[#F3C623]">Video 02 · Shorts</span>
+                        <a href="https://www.youtube.com/shorts/fJBQoO1oTEY" target="_blank" rel="noopener noreferrer" class="text-[11px] text-slate-300 hover:text-[#F3C623]">Buka Link ↗</a>
+                      </div>
+                      <div class="relative w-full aspect-[9/16] max-h-[360px] bg-black overflow-hidden">
+                        <iframe
+                          class="w-full h-full border-0"
+                          src="https://www.youtube.com/embed/fJBQoO1oTEY?rel=0&modestbranding=1&playsinline=1"
+                          title="Kisah Teladan Kepemimpinan Islam 2"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowfullscreen
+                        ></iframe>
+                      </div>
+                      <div class="w-full px-3 py-2 bg-[#0B192C]/95 border-t border-[#D4AF37]/25 text-center">
+                        <p class="text-xs font-bold text-white truncate">Kisah Kepemimpinan Islam #2</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="lg:col-span-5 glass-card rounded-2xl p-6 flex flex-col justify-between space-y-3">
+                  <div class="space-y-3">
+                    <h4 class="text-sm font-extrabold text-[#F3C623] uppercase">3 Intisari Panutan Kejayaan Islam:</h4>
+                    <div class="p-3 rounded-xl bg-[#07111E]/80 border border-slate-700 text-xs">
+                      <strong class="text-[#F3C623] block">1. Umar bin Abdul Aziz (Shiddiq &amp; Amanah)</strong>
+                      Mematikan lampu minyak negara saat berbicara urusan pribadi agar tidak memakai fasilitas umat.
+                    </div>
+                    <div class="p-3 rounded-xl bg-[#07111E]/80 border border-slate-700 text-xs">
+                      <strong class="text-[#F3C623] block">2. Sultan Muhammad Al-Fatih (Fathanah - Usia 21 Tahun)</strong>
+                      Menguasai 6 bahasa, sains, dan menyeberangkan 70 kapal melintasi bukit Galata dalam semalam.
+                    </div>
+                    <div class="p-3 rounded-xl bg-[#07111E]/80 border border-slate-700 text-xs">
+                      <strong class="text-[#F3C623] block">3. Shalahuddin Al-Ayyubi (Tabligh &amp; Uswah Hasanah)</strong>
+                      Menaklukkan hati kawan maupun lawan dengan kasih sayang, keadilan, dan keteguhan menepati janji.
+                    </div>
+                  </div>
+                  <button onclick="nextSlide()" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F3C623] text-[#0B192C] text-xs font-extrabold cursor-pointer">
+                    Masuk ke Materi Utama: Makna Khalifah Fil Ardh →
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        case 2:
+          return `
+            <div class="space-y-6">
+              <div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Makna <span class="text-[#F3C623]">Khalifah Fil Ardh</span></h2>
+                <p class="text-sm text-slate-200 mt-1">Memahami amanah, memimpin dengan teladan, membawa kebaikan untuk bumi.</p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                  <div>
+                    <div class="text-3xl font-extrabold text-[#F3C623] font-mono mb-2">01</div>
+                    <h3 class="text-lg font-bold text-[#F3C623] mb-3">Manusia sebagai Khalifah di Bumi</h3>
+                    <p class="text-sm text-slate-200 mb-3">Amanah untuk mengelola, menjaga, dan memakmurkan bumi.</p>
+                    <p class="text-xs text-slate-300 mb-5"><strong class="text-white">Contoh:</strong> Ketua panitia mengajak anggota menjaga kebersihan fasilitas dan ikut membereskan ruangan setelah acara.</p>
+                  </div>
+                  <button onclick="openModal('qs-albaqarah-30')" class="w-full text-left p-3.5 rounded-xl border border-[#D4AF37]/50 bg-[#D4AF37]/10 text-xs font-bold text-[#F3C623] cursor-pointer">
+                    Baca Detail: QS. Al-Baqarah: 30
+                  </button>
+                </div>
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                  <div>
+                    <div class="text-3xl font-extrabold text-[#F3C623] font-mono mb-2">02</div>
+                    <h3 class="text-lg font-bold text-[#F3C623] mb-3">Peran Ganda OSIS: Pemimpin &amp; Teladan</h3>
+                    <p class="text-sm text-slate-200 mb-3">Memimpin dengan integritas, menginspirasi dengan aksi nyata.</p>
+                    <p class="text-xs text-slate-300 mb-5"><strong class="text-white">Contoh:</strong> Pengurus OSIS hadir 30 menit lebih awal saat piket gerbang dan tertib memakai seragam lengkap tanpa dispensasi.</p>
+                  </div>
+                  <button onclick="openModal('prinsip-kepemimpinan')" class="w-full text-left p-3.5 rounded-xl border border-[#D4AF37]/50 bg-[#D4AF37]/10 text-xs font-bold text-[#F3C623] cursor-pointer">
+                    Prinsip: Respek lahir dari konsistensi perilaku
+                  </button>
+                </div>
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                  <div>
+                    <div class="text-3xl font-extrabold text-[#F3C623] font-mono mb-2">03</div>
+                    <h3 class="text-lg font-bold text-[#F3C623] mb-3">Menjadi Uswah Hasanah</h3>
+                    <p class="text-sm text-slate-200 mb-3">Contoh yang baik bagi lingkungan, membawa kebaikan di mana pun.</p>
+                    <p class="text-xs text-slate-300 mb-5"><strong class="text-white">Contoh:</strong> Bersegera ke mushola saat adzan berkumandang dan menjadi penengah yang santun di grup media sosial angkatan.</p>
+                  </div>
+                  <button onclick="openModal('qs-alahzab-21')" class="w-full text-left p-3.5 rounded-xl border border-[#D4AF37]/50 bg-[#D4AF37]/10 text-xs font-bold text-[#F3C623] cursor-pointer">
+                    Baca Detail: QS. Al-Ahzab: 21
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        case 3:
+          return `
+            <div class="space-y-6">
+              <div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Fondasi <span class="text-[#F3C623]">Rasa Percaya Diri</span></h2>
+                <p class="text-sm text-slate-200 mt-1">Tiga pilar utama yang membentuk leadership berdaya dan berakhlak.</p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                  <div>
+                    <h3 class="text-base font-extrabold text-[#F3C623] uppercase mb-3">1. Mengenali Potensi Diri</h3>
+                    <p class="text-sm text-slate-200 mb-3">Pahami kelebihan dan kekuatan unik titipan Allah untuk dikembangkan.</p>
+                    <div class="p-3 rounded-xl border border-[#D4AF37]/40 bg-[#0B192C]/70 text-xs italic mb-4">"Setiap potensi saling melengkapi ibarat potongan puzzle."</div>
+                  </div>
+                  <button onclick="openModal('qs-attin-isra')" class="w-full text-left p-3 rounded-xl border border-[#D4AF37]/50 bg-[#D4AF37]/10 text-xs font-bold text-[#F3C623] cursor-pointer">
+                    Dalil Self-Potential (QS. At-Tin: 4 / Al-Isra: 84)
+                  </button>
+                </div>
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                  <div>
+                    <h3 class="text-base font-extrabold text-[#F3C623] uppercase mb-3">2. Niat Ikhlas Lillahi Ta'ala</h3>
+                    <p class="text-sm text-slate-200 mb-3">Landasi setiap langkah demi keridhaan Allah untuk mendapat keberkahan.</p>
+                    <div class="p-3 rounded-xl border border-[#D4AF37]/40 bg-[#0B192C]/70 text-xs italic mb-4">"Ikhlas membuat mental tahan banting saat dikritik dan tidak haus validasi."</div>
+                  </div>
+                  <button onclick="openModal('hadits-niat-ikhlas')" class="w-full text-left p-3 rounded-xl border border-[#D4AF37]/50 bg-[#D4AF37]/10 text-xs font-bold text-[#F3C623] cursor-pointer">
+                    Hadits Niat &amp; Ketulusan Beramal
+                  </button>
+                </div>
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                  <div>
+                    <h3 class="text-base font-extrabold text-[#F3C623] uppercase mb-3">3. Percaya Diri vs Kesombongan</h3>
+                    <p class="text-sm text-slate-200 mb-3">Percaya diri menguatkan &amp; menginspirasi; kesombongan merusak kepercayaan.</p>
+                    <div class="p-3 rounded-xl border border-[#D4AF37]/40 bg-[#0B192C]/70 text-xs italic mb-4">"Percaya diri merangkul orang lain; kesombongan meremehkan orang lain."</div>
+                  </div>
+                  <button onclick="openModal('hadits-sombong')" class="w-full text-left p-3 rounded-xl border border-[#D4AF37]/50 bg-[#D4AF37]/10 text-xs font-bold text-[#F3C623] cursor-pointer">
+                    Hadits Definisi Sombong (HR. Muslim)
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        case 4:
+          return `
+            <div class="space-y-6">
+              <div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Karakter Kunci <span class="text-[#F3C623]">Khalifah</span></h2>
+                <p class="text-sm text-slate-200 mt-1">Empat sifat nabi yang membentuk pemimpin panutan di sekolah (Klik kartu untuk detail).</p>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div onclick="openModal('karakter-shiddiq')" class="glass-card rounded-2xl p-6 cursor-pointer">
+                  <h3 class="text-xl font-extrabold text-[#F3C623] mb-1">Shiddiq</h3>
+                  <p class="text-xs text-[#F3C623]/90 mb-3">(Jujur &amp; Berintegritas)</p>
+                  <p class="text-sm text-slate-200 mb-3">Menjunjung kebenaran dalam setiap ucapan dan tindakan.</p>
+                  <p class="text-xs text-slate-300">Bendahara menyusun laporan kas acara secara transparan hingga nominal terkecil tanpa manipulasi.</p>
+                </div>
+                <div onclick="openModal('karakter-amanah')" class="glass-card rounded-2xl p-6 cursor-pointer">
+                  <h3 class="text-xl font-extrabold text-[#F3C623] mb-1">Amanah</h3>
+                  <p class="text-xs text-[#F3C623]/90 mb-3">(Dapat Dipercaya)</p>
+                  <p class="text-sm text-slate-200 mb-3">Bertanggung jawab penuh atas tugas dan janji yang diemban.</p>
+                  <p class="text-xs text-slate-300">Menuntaskan proposal sesuai deadline dan merawat aset sound system/proyektor sekolah hingga kembali utuh.</p>
+                </div>
+                <div onclick="openModal('karakter-fathanah')" class="glass-card rounded-2xl p-6 cursor-pointer">
+                  <h3 class="text-xl font-extrabold text-[#F3C623] mb-1">Fathanah</h3>
+                  <p class="text-xs text-[#F3C623]/90 mb-3">(Cerdas &amp; Solutif)</p>
+                  <p class="text-sm text-slate-200 mb-3">Bijaksana dalam memetakan prioritas dan mengambil keputusan.</p>
+                  <p class="text-xs text-slate-300">Sigap mengalihkan panggung pembukaan ke aula tertutup saat hujan lebat turun tanpa menimbulkan panik.</p>
+                </div>
+                <div onclick="openModal('karakter-tabligh')" class="glass-card rounded-2xl p-6 cursor-pointer">
+                  <h3 class="text-xl font-extrabold text-[#F3C623] mb-1">Tabligh</h3>
+                  <p class="text-xs text-[#F3C623]/90 mb-3">(Komunikatif &amp; Santun)</p>
+                  <p class="text-sm text-slate-200 mb-3">Menyampaikan pesan kebaikan dengan tutur kata yang jelas dan santun.</p>
+                  <p class="text-xs text-slate-300">Menyosialisasikan tata tertib dan info lomba antarkelas secara persuasif tanpa nada menggurui.</p>
+                </div>
+              </div>
+            </div>
+          `;
+        case 5:
+          return `
+            <div class="space-y-5">
+              <div>
+                <div class="text-xs font-bold uppercase tracking-widest text-[#F3C623]">MANIFESTASI 4 SIFAT NABI PADA PEMIMPIN BESAR</div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Tokoh Panutan <span class="text-[#F3C623]">Dunia &amp; Indonesia</span></h2>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div onclick="openModal('karakter-shiddiq')" class="glass-card rounded-2xl p-5 cursor-pointer">
+                  <div class="text-xs font-bold text-[#F3C623] uppercase mb-1">1. Shiddiq (Jujur &amp; Bersih)</div>
+                  <h3 class="text-base font-extrabold text-white mb-2">Umar bin Abdul Aziz · Bung Hatta &amp; Jend. Hoegeng</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Umar mematikan lampu negara untuk urusan pribadi; Bung Hatta mengembalikan sisa uang dinas hingga sen terakhir; Hoegeng menutup toko bunga demi menolak gratifikasi.</p>
+                </div>
+                <div onclick="openModal('karakter-amanah')" class="glass-card rounded-2xl p-5 cursor-pointer">
+                  <div class="text-xs font-bold text-[#F3C623] uppercase mb-1">2. Amanah (Dapat Dipercaya)</div>
+                  <h3 class="text-base font-extrabold text-white mb-2">Shalahuddin Al-Ayyubi · Jend. Sudirman &amp; HB IX</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Shalahuddin menepati janji damai Al-Quds; Jenderal Sudirman memimpin gerilya dari atas tandu di usia 29 tahun; Sultan HB IX menyumbangkan 6 juta Gulden untuk RI.</p>
+                </div>
+                <div onclick="openModal('karakter-fathanah')" class="glass-card rounded-2xl p-5 cursor-pointer">
+                  <div class="text-xs font-bold text-[#F3C623] uppercase mb-1">3. Fathanah (Cerdas &amp; Solutif)</div>
+                  <h3 class="text-base font-extrabold text-white mb-2">Sultan Muhammad Al-Fatih · Prof. B.J. Habibie</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Al-Fatih (21 thn) menyeberangkan 70 kapal lewat bukit; Prof. B.J. Habibie memadukan Imtak &amp; Iptek (46 paten dirgantara) serta solutif mengatasi krisis bangsa.</p>
+                </div>
+                <div onclick="openModal('karakter-tabligh')" class="glass-card rounded-2xl p-5 cursor-pointer">
+                  <div class="text-xs font-bold text-[#F3C623] uppercase mb-1">4. Tabligh (Komunikatif &amp; Santun)</div>
+                  <h3 class="text-base font-extrabold text-white mb-2">Mus’ab bin Umair · K.H. Agus Salim &amp; Ahmad Dahlan</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Mus'ab menyatukan Madinah dengan dialog santun; H. Agus Salim memukau diplomasi PBB dengan 9 bahasa; K.H. Ahmad Dahlan mendidik pemuda lewat amal nyata.</p>
+                </div>
+              </div>
+            </div>
+          `;
+        case 6:
+          return `
+            <div class="space-y-5">
+              <div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Langkah Praktis <span class="text-[#F3C623]">di Lapangan</span></h2>
+                <p class="text-sm text-slate-200 mt-1">Langkah sederhana, dampak besar. Terapkan di setiap kesempatan kepanitiaan.</p>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="glass-card rounded-2xl p-5">
+                  <div class="text-3xl font-extrabold text-[#F3C623] font-mono mb-1">01</div>
+                  <h3 class="text-base font-bold text-[#F3C623] mb-2">Persiapan Matang</h3>
+                  <p class="text-xs text-slate-200 mb-3">Rencanakan dengan jelas dan pahami tujuan sebelum bertindak.</p>
+                  <p class="text-[11px] text-slate-300"><strong class="text-[#F3C623]">Aksi:</strong> Rundown rinci, PIC per divisi, gladi bersih H-1.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-5">
+                  <div class="text-3xl font-extrabold text-[#F3C623] font-mono mb-1">02</div>
+                  <h3 class="text-base font-bold text-[#F3C623] mb-2">Komunikasi Efektif</h3>
+                  <p class="text-xs text-slate-200 mb-3">Sampaikan ide secara lugas dan dengarkan masukan lapangan.</p>
+                  <p class="text-[11px] text-slate-300"><strong class="text-[#F3C623]">Aksi:</strong> Briefing 10 menit sebelum pintu dibuka, format pesan jelas.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-5">
+                  <div class="text-3xl font-extrabold text-[#F3C623] font-mono mb-1">03</div>
+                  <h3 class="text-base font-bold text-[#F3C623] mb-2">Manajemen Kesalahan</h3>
+                  <p class="text-xs text-slate-200 mb-3">Akui kesalahan, fokus perbaikan cepat, hindari menyalahkan rekan.</p>
+                  <p class="text-[11px] text-slate-300"><strong class="text-[#F3C623]">Aksi:</strong> Quick damage control saat kendala teknis terjadi.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-5">
+                  <div class="text-3xl font-extrabold text-[#F3C623] font-mono mb-1">04</div>
+                  <h3 class="text-base font-bold text-[#F3C623] mb-2">Kerjasama Tim</h3>
+                  <p class="text-xs text-slate-200 mb-3">Bersatu, saling melengkapi, dan bergerak bersama mencapai target.</p>
+                  <p class="text-[11px] text-slate-300"><strong class="text-[#F3C623]">Aksi:</strong> Saling back-up antar divisi saat acara berlangsung.</p>
+                </div>
+              </div>
+              <button onclick="openModal('unicef-toolkits')" class="w-full glass-card rounded-2xl p-4 px-6 flex items-center justify-between text-left cursor-pointer">
+                <span class="text-sm font-bold text-[#F3C623]">Baca Detail: UNICEF Life Skills &amp; Community Engagement Toolkits</span>
+                <i data-lucide="book-open" class="w-4 h-4 text-[#F3C623]"></i>
+              </button>
+            </div>
+          `;
+        case 7:
+          return `
+            <div class="space-y-6">
+              <div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Aktivitas <span class="text-[#F3C623]">Interaktif Sesi</span></h2>
+                <p class="text-sm text-slate-200 mt-1">Menerjemahkan teori kepemimpinan menjadi pemahaman dan aksi nyata.</p>
+              </div>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="glass-card rounded-2xl p-7 flex flex-col justify-between">
+                  <div>
+                    <span class="px-4 py-1 rounded-lg bg-[#F3C623] text-[#0B192C] text-xs font-extrabold">Sesi 1 - 10 Menit</span>
+                    <h3 class="text-2xl font-extrabold text-white mt-4 mb-2">Refleksi Diri (Muhasabah)</h3>
+                    <p class="text-sm text-slate-200 mb-4">Mengenali kelebihan unik dan menaklukkan rasa takut memimpin.</p>
+                    <p class="text-xs text-slate-300 bg-[#0B192C]/70 p-4 rounded-xl mb-6">
+                      Tulis di buku: (1) Satu kelebihan yang paling sering dihargai teman, (2) Satu ketakutan terbesar saat memegang tanggung jawab, dan cara mengatasinya.
+                    </p>
+                  </div>
+                  <button onclick="openTimerModal(10, 'Sesi 1: Refleksi Diri (Muhasabah)', 'Mengenali kelebihan unik dan menaklukkan rasa takut memimpin.')" class="w-full py-3 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F3C623] text-[#0B192C] font-extrabold text-sm cursor-pointer">
+                    Buka Timer 10 Menit Interaktif
+                  </button>
+                </div>
+                <div class="glass-card rounded-2xl p-7 flex flex-col justify-between">
+                  <div>
+                    <span class="px-4 py-1 rounded-lg bg-[#F3C623] text-[#0B192C] text-xs font-extrabold">Sesi 2 - 15 Menit</span>
+                    <h3 class="text-2xl font-extrabold text-white mt-4 mb-2">Studi Kasus Lapangan</h3>
+                    <p class="text-sm text-slate-200 mb-4">Problem solving cepat berlandaskan karakter Shiddiq, Amanah, Fathanah, Tabligh.</p>
+                    <p class="text-xs text-slate-300 bg-[#0B192C]/70 p-4 rounded-xl mb-6">
+                      "Dua hari jelang event, anggaran berkurang 50% dan koordinasi antar-divisi macet. Rumuskan 3 langkah konkret pemecahan masalah dalam tim!"
+                    </p>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button onclick="openTimerModal(15, 'Sesi 2: Studi Kasus Lapangan', 'Rumuskan 3 langkah konkret pemecahan masalah dalam tim!')" class="py-3 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F3C623] text-[#0B192C] font-extrabold text-xs sm:text-sm cursor-pointer">
+                      Buka Timer 15 Menit
+                    </button>
+                    <button onclick="openModal('panduan-studi-kasus')" class="py-3 rounded-xl border border-[#D4AF37] text-[#F3C623] font-bold text-xs sm:text-sm cursor-pointer">
+                      Panduan Penyelesaian
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        case 8:
+          return `
+            <div class="space-y-6 max-w-3xl">
+              <h2 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                Memimpin dengan Hati,<br /><span class="text-[#F3C623]">Menjadi Teladan Sejati</span>
+              </h2>
+              <blockquote class="text-base sm:text-xl text-slate-200 italic">
+                “Jadilah pemimpin yang menginspirasi, membawa kebaikan di mana pun berada, dan meninggalkan jejak kebaikan abadi.”
+              </blockquote>
+              <div class="glass-card rounded-2xl p-6 space-y-4">
+                <h3 class="text-lg font-extrabold text-[#F3C623] uppercase">RUANG DISKUSI &amp; TANYA JAWAB</h3>
+                <p class="text-sm text-slate-200">Kami membuka ruang interaksi. Silakan ajukan pertanyaan, bagikan tantangan di kepengurusan, atau sampaikan gagasan terbaik Anda.</p>
+                <button onclick="openFaqModal()" class="px-5 py-3 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F3C623] text-[#0B192C] font-extrabold text-xs sm:text-sm cursor-pointer">
+                  FAQ / Pertanyaan Umum Seputar Kepemimpinan OSIS
+                </button>
+              </div>
+            </div>
+          `;
+      }
+    }
+
+    function renderSlide() {
+      const container = document.getElementById('slide-container');
+      container.classList.remove('slide-enter');
+      void container.offsetWidth;
+      container.innerHTML = getSlideHTML(currentSlide);
+      container.classList.add('slide-enter');
+
+      document.getElementById('slide-counter-text').textContent = `Slide ${currentSlide + 1} dari ${totalSlides}`;
+      document.getElementById('btn-prev').disabled = currentSlide === 0;
+      document.getElementById('btn-next').disabled = currentSlide === totalSlides - 1;
+
+      const dotsContainer = document.getElementById('dot-indicators');
+      dotsContainer.innerHTML = Array.from({ length: totalSlides }).map((_, idx) => `
+        <button onclick="goToSlide(${idx})" class="h-2.5 rounded-full transition-all cursor-pointer ${idx === currentSlide ? 'w-8 bg-[#F3C623]' : 'w-2.5 bg-slate-600'}"></button>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    function goToSlide(index) {
+      if (index >= 0 && index < totalSlides) {
+        currentSlide = index;
+        renderSlide();
+      }
+    }
+    function nextSlide() { if (currentSlide < totalSlides - 1) { currentSlide++; renderSlide(); } }
+    function prevSlide() { if (currentSlide > 0) { currentSlide--; renderSlide(); } }
+
+    function openModal(key) {
+      stopTimer();
+      const item = MODAL_DATA[key];
+      if (!item) return;
+      const backdrop = document.getElementById('modal-backdrop');
+      const content = document.getElementById('modal-content');
+      content.innerHTML = `
+        <div class="flex items-start justify-between gap-4 mb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#F3C623]">${item.badge}</span>
+          <button onclick="closeModal()" class="p-1.5 rounded-lg border border-slate-700 text-slate-400 hover:text-white cursor-pointer"><i data-lucide="x" class="w-4 h-4"></i></button>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-extrabold text-white mb-1.5">${item.title}</h3>
+        <p class="text-xs sm:text-sm text-slate-300 mb-5">${item.subtitle}</p>
+        ${item.arabic ? `
+          <div class="p-5 rounded-2xl bg-[#07111E]/90 border border-[#D4AF37]/40 mb-5 space-y-3">
+            <p dir="rtl" class="font-arabic text-2xl sm:text-3xl text-[#F3C623] text-right leading-loose">${item.arabic}</p>
+            <p class="text-xs text-slate-300 italic">${item.latin}</p>
+            <p class="text-xs sm:text-sm text-slate-100 font-medium">${item.translation}</p>
+          </div>
+        ` : ''}
+        <div class="space-y-2.5 mb-5">
+          <h4 class="text-sm font-bold text-[#F3C623] uppercase">${item.reflectionTitle}</h4>
+          <ul class="space-y-2">
+            ${item.points.map(pt => `<li class="text-xs sm:text-sm text-slate-200 flex items-start gap-2"><span class="text-[#F3C623]">◇</span><span>${pt}</span></li>`).join('')}
+          </ul>
+        </div>
+        <div class="p-4 rounded-xl bg-[#D4AF37]/15 border border-[#D4AF37]/50 text-xs sm:text-sm text-slate-100">
+          <strong class="text-[#F3C623]">Intisari Aksi:</strong> ${item.takeaway}
+        </div>
+      `;
+      backdrop.classList.remove('hidden');
+      backdrop.classList.add('flex');
+      lucide.createIcons();
+    }
+
+    function openFaqModal() {
+      stopTimer();
+      const backdrop = document.getElementById('modal-backdrop');
+      const content = document.getElementById('modal-content');
+      content.innerHTML = `
+        <div class="flex items-start justify-between gap-4 mb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#F3C623]">FAQ Kepemimpinan OSIS</span>
+          <button onclick="closeModal()" class="p-1.5 rounded-lg border border-slate-700 text-slate-400 hover:text-white cursor-pointer"><i data-lucide="x" class="w-4 h-4"></i></button>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-extrabold text-white mb-4">3 Pertanyaan Tersering Seputar Kepemimpinan OSIS</h3>
+        <div class="space-y-4">
+          ${FAQ_LIST.map(item => `
+            <div class="p-4 rounded-xl bg-[#07111E]/85 border border-[#D4AF37]/35 space-y-2">
+              <h4 class="text-sm font-bold text-[#F3C623]">${item.q}</h4>
+              <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">${item.a}</p>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      backdrop.classList.remove('hidden');
+      backdrop.classList.add('flex');
+      lucide.createIcons();
+    }
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60).toString().padStart(2, '0');
+      const s = (sec % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    function openTimerModal(minutes, title, promptText) {
+      stopTimer();
+      timerRemainingSeconds = minutes * 60;
+      const backdrop = document.getElementById('modal-backdrop');
+      const content = document.getElementById('modal-content');
+      content.innerHTML = `
+        <div class="flex items-start justify-between gap-4 mb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#F3C623]">Countdown Timer Sesi Interaktif</span>
+          <button onclick="closeModal()" class="p-1.5 rounded-lg border border-slate-700 text-slate-400 hover:text-white cursor-pointer"><i data-lucide="x" class="w-4 h-4"></i></button>
+        </div>
+        <h3 class="text-xl font-extrabold text-white mb-2">${title}</h3>
+        <p class="text-xs sm:text-sm text-slate-300 mb-6">${promptText}</p>
+        <div class="py-8 rounded-2xl bg-[#07111E]/90 border border-[#D4AF37]/50 text-center mb-6">
+          <div id="timer-display" class="text-6xl font-extrabold font-mono text-[#F3C623] mb-2">${formatTime(timerRemainingSeconds)}</div>
+          <p id="timer-status" class="text-xs text-slate-400">Siap dimulai</p>
+        </div>
+        <div class="flex items-center justify-center gap-3">
+          <button onclick="toggleTimer()" id="timer-toggle-btn" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F3C623] text-[#0B192C] font-extrabold text-sm cursor-pointer">Mulai Timer</button>
+          <button onclick="resetTimer(${minutes})" class="px-4 py-2.5 rounded-xl border border-[#D4AF37]/50 text-xs font-bold text-slate-200 cursor-pointer">Reset</button>
+        </div>
+      `;
+      backdrop.classList.remove('hidden');
+      backdrop.classList.add('flex');
+      lucide.createIcons();
+    }
+
+    function toggleTimer() {
+      const btn = document.getElementById('timer-toggle-btn');
+      const status = document.getElementById('timer-status');
+      if (timerRunning) {
+        stopTimer();
+        if (btn) btn.textContent = 'Lanjutkan';
+        if (status) status.textContent = 'Timer dijeda';
+      } else {
+        timerRunning = true;
+        if (btn) btn.textContent = 'Jeda Timer';
+        if (status) status.textContent = 'Sesi sedang berlangsung...';
+        timerInterval = setInterval(() => {
+          if (timerRemainingSeconds > 0) {
+            timerRemainingSeconds--;
+            const disp = document.getElementById('timer-display');
+            if (disp) disp.textContent = formatTime(timerRemainingSeconds);
+          } else {
+            stopTimer();
+            const statusEl = document.getElementById('timer-status');
+            if (statusEl) statusEl.textContent = 'Waktu Habis!';
+          }
+        }, 1000);
+      }
+    }
+
+    function stopTimer() {
+      timerRunning = false;
+      if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+    }
+
+    function resetTimer(minutes) {
+      stopTimer();
+      timerRemainingSeconds = minutes * 60;
+      const disp = document.getElementById('timer-display');
+      const btn = document.getElementById('timer-toggle-btn');
+      if (disp) disp.textContent = formatTime(timerRemainingSeconds);
+      if (btn) btn.textContent = 'Mulai Timer';
+    }
+
+    function closeModal() {
+      stopTimer();
+      const backdrop = document.getElementById('modal-backdrop');
+      backdrop.classList.add('hidden');
+      backdrop.classList.remove('flex');
+    }
+
+    function handleBackdropClick(e) {
+      if (e.target.id === 'modal-backdrop') closeModal();
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      const modalOpen = !document.getElementById('modal-backdrop').classList.contains('hidden');
+      if (e.key === 'Escape' && modalOpen) { closeModal(); return; }
+      if (!modalOpen) {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+      }
+    });
+
+    renderSlide();
+  </script>
+</body>
+</html>

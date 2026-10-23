@@ -1,0 +1,6 @@
+{
+  "name": "Kepemimpinan OSIS: Khalifah Fil Ardh & Fondasi Percaya Diri",
+  "description": "Presentasi interaktif LDKS OSIS oleh Abu Haripin, M.Pd. membahas karakter Khalifah Fil Ardh, fondasi rasa percaya diri, sifat kepemimpinan Nabi, langkah praktis kepanitiaan, dan studi kasus lapangan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
